@@ -5,7 +5,7 @@
 
   <p align="center">
     Simulação da evolução de um câncer</br>
-    ✖️ construindo ✖️
+    ⏫ Construindo ⏫
   </p>
 </div>
 
