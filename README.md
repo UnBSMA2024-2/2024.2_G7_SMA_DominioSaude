@@ -4,7 +4,7 @@
   <h3 align="center">Simulação da evolução cancerígena</h3>
 
   <p align="center">
-    Simulação da evolução de um cancer</br>
+    Simulação da evolução de um câncer</br>
     ✖️ construindo ✖️
   </p>
 </div>
