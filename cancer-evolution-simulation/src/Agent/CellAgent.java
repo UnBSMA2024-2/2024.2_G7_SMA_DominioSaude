@@ -25,7 +25,7 @@ public class CellAgent extends Agent {
     private static int agentCount = 0;
     private static final int MAX_AGENTS = 100; 
     private static final int DAYS_TO_DIVIDE = 4; 
-    private static final int DAYS_TO_RUN = 10; 
+    private static final int DAYS_TO_RUN = 60; 
     private static final ConcurrentLinkedQueue<CellInfo> cellRegistry = new ConcurrentLinkedQueue<>();
 
     @Override
@@ -75,6 +75,8 @@ public class CellAgent extends Agent {
         System.out.println("Predisposição genética: " + celltype.getGeneticPredisposition() + "%");
         System.out.println("Status da célula: " + celltype);
 
+        this.requestCell(getLocalName(), String.format("%d%%", celltype.getGeneticPredisposition()), celltype.getClass().getSimpleName(), "/cell");
+        
         // Adicionar comportamentos
         addBehaviour(new CellDivisionBehaviour(this, random.nextInt(10) * 1000 + 1));
         addBehaviour(new CellApoptoseBehaviour(this, random.nextInt(99) * 1000 + 1));
