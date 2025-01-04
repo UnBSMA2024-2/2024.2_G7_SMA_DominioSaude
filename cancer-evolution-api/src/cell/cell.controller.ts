@@ -9,8 +9,11 @@ export class CellController {
 
   constructor(private cellGateway: CellGateway) {}
 
-  @Post('/save')
-  saveCell(@Body() cell: Cell) {}
+  @Post()
+  saveCell(@Body() cell: Cell) {
+    console.log(cell);
+    this.cellGateway.handleCell(cell);
+  }
 
   @Post('/apoptose')
   apoptoseCell(@Body() cell: Cell) {}
