@@ -2,6 +2,10 @@ package Agent;
 
 import jade.core.Agent;
 import jade.core.behaviours.TickerBehaviour;
+
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Random;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
@@ -84,6 +88,37 @@ public class CellAgent extends Agent {
             agentCount--;
         }
         System.out.println("TakeDown : Agente célula encerrado: " + getLocalName() + ". Total de agentes ativos: " + agentCount);
+    }
+
+    private void requestCell(String name, String geneticPredisposition, String cellType, String endpoint) {
+        try {
+            String url = "http://localhost:3000" + endpoint;
+            HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Content-Type", "application/json");
+            conn.setRequestProperty("Accept", "application/json");
+            conn.setDoOutput(true);
+
+            String jsonInputString = String.format(
+                    "{\"name\": \"%s\", \"geneticPredisposition\": \"%s\", \"cellType\": \"%s\"}",
+                    name, geneticPredisposition, cellType
+            );
+
+            try (OutputStream os = conn.getOutputStream()) {
+                byte[] input = jsonInputString.getBytes("utf-8");
+                os.write(input, 0, input.length);
+            }
+
+            if (conn.getResponseCode() != 201) {
+                System.out.println("Erro " + conn.getResponseCode() + " ao enviar dados para a URL " + url);
+            }
+
+            conn.disconnect();
+        } catch (Exception e) {
+            System.out.println("Erro ao fazer a requisição HTTP:");
+            e.printStackTrace();
+        }
     }
 
     private class CellDivisionBehaviour extends TickerBehaviour {
