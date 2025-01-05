@@ -1,0 +1,38 @@
+<router-outlet></router-outlet>
+<div class="container">
+  <div class="header">
+    <h1>Sistema Multiagente para Avaliação de Probabilidade de Câncer</h1>
+  </div>
+  <div class="body">
+    <div #cellContainer class="cell-container">
+      <ng-container *ngFor="let cell of cellList; let i = index">
+        <div
+          #cellElement
+          [ngStyle]="{ 'background-color': setCellColor(cell.cellType) }"
+          class="cell"
+        ></div>
+      </ng-container>
+    </div>
+    <div class="caption">
+      <h2>Legenda - Tipos de Célula</h2>
+      <div class="caption-body">
+        <div>
+          <div style="background-color: red" class="caption-cell"></div>
+          <h3>Célula Normal</h3>
+        </div>
+        <div>
+          <div style="background-color: orange" class="caption-cell"></div>
+          <h3>Célula Danificada</h3>
+        </div>
+        <div>
+          <div style="background-color: greenyellow" class="caption-cell"></div>
+          <h3>Célula Pré Cancerigena</h3>
+        </div>
+        <div>
+          <div style="background-color: green" class="caption-cell"></div>
+          <h3>Célula Cancerigena</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

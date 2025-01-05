@@ -1,0 +1,140 @@
+.container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background: url("../assets/background.jpg") center/100% no-repeat;
+}
+
+.header {
+  height: 10%;
+  width: 95%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    color: #fff;
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    padding: 5px;
+  }
+}
+
+.body {
+  height: 90%;
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cell-container {
+  width: 70%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  border: 1px solid #508bab;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.cell {
+  width: 20px;
+  height: 20px;
+  border: 1px solid black;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.caption {
+  width: 25%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  border: 1px solid #508bab;
+  backdrop-filter: blur(10px);
+
+  h2 {
+    height: 5%;
+    color: #fff;
+  }
+}
+
+.caption-body {
+  height: 90%;
+  width: 100%;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+
+  div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+  }
+}
+
+.caption-cell {
+  width: 50px !important;
+  height: 50px !important;
+  border: 1px solid black;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+@media (max-width: 1250px) {
+  .container {
+    background: url("../assets/background.jpg") center/200% no-repeat;
+  }
+
+  .header {
+    height: 10%;
+
+    h1 {
+      text-align: center;
+    }
+  }
+
+  .cell-container {
+    width: 60%;
+  }
+
+  .caption {
+    width: 35%;
+  }
+}
+
+@media (max-width: 700px) {
+  .container {
+    background: url("../assets/background.jpg") center/250% no-repeat;
+  }
+
+  .header {
+    height: 15%;
+
+    h1 {
+      text-align: center;
+    }
+  }
+
+  .cell-container {
+    width: 95%;
+  }
+
+  .caption {
+    display: none;
+  }
+}
