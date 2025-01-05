@@ -1,0 +1,28 @@
+<div class="container">
+  <h1>Resultados da Simulação</h1>
+
+  <div>
+    <h3>
+      Porcentagem de células normais -
+      <span>{{ data.normalPercentage }}</span>
+    </h3>
+    <h3>
+      Porcentagem de células danificadas -
+      <span>{{ data.damagedPercentage }}</span>
+    </h3>
+    <h3>
+      Porcentagem de células pré-cancerigenas -
+      <span>{{ data.preCancerousPercentage }}</span>
+    </h3>
+    <h3>
+      Porcentagem de células cancerigenas -
+      <span>{{ data.cancerousPercentage }}</span>
+    </h3>
+  </div>
+
+  <section>
+    <button color="primary" mat-flat-button (click)="closeDialog()">
+      Fechar
+    </button>
+  </section>
+</div>
