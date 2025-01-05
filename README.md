@@ -1,7 +1,7 @@
 # Simulação de uma evolução cancerígena
 
 **Disciplina**: FGA0134 - Sistemas Multiagentes <br>
-**Nro do Grupo: 07 **: XX<br>
+**Nro do Grupo**: 07<br>
 **Frente de Pesquisa**: XXXXXXXXXX<br>
 
 ## Alunos
