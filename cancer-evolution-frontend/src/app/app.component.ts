@@ -9,7 +9,7 @@ import {
   ChangeDetectorRef,
 } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Cell } from './types/cell.type';
+import { Cell, CellType } from './types/cell.type';
 import { WebSocketService } from './services/web-socket.service';
 import { CommonModule } from '@angular/common';
 
@@ -44,13 +44,16 @@ export class AppComponent implements OnInit {
         cellElement.nativeElement.style.backgroundColor = this.setCellColor(
           this.cellList[index].cellType
         );
+
+        console.log(`${cell} realizou reparo`);
       }
 
       if (behavior == 'apoptose') {
         const index = this.cellList.findIndex((c) => c.name === cell.name);
-        const apoptoseElement = this.cellElements.toArray()[index];
 
-        this.applyApoptoseAnimation(apoptoseElement);
+        console.log(`${cell} realizou apoptose`);
+
+        this.cellList.splice(index, 1);
         this.cdr.detectChanges();
       }
 
@@ -70,12 +73,12 @@ export class AppComponent implements OnInit {
     });
   }
 
-  setCellColor(cellType: string) {
+  setCellColor(cellType: CellType) {
     const cellTypes = new Map();
-    cellTypes.set('NormalCell', 'red');
-    cellTypes.set('DamagedCell', 'orange');
-    cellTypes.set('PreCancerousCell', 'greenyellow');
-    cellTypes.set('CancerousCell', 'green');
+    cellTypes.set(CellType.NormalCell, 'red');
+    cellTypes.set(CellType.DamagedCell, 'orange');
+    cellTypes.set(CellType.PreCancerousCell, 'greenyellow');
+    cellTypes.set(CellType.CancerousCell, 'green');
 
     return cellTypes.get(cellType);
   }
@@ -124,43 +127,5 @@ export class AppComponent implements OnInit {
 
   private getRandomPosition(limit: number): number {
     return Math.random() * limit - limit / 2;
-  }
-
-  applyApoptoseAnimation(cell: ElementRef): void {
-    // Define a animação de crescimento
-    const apoptoseAnimation = `
-      @keyframes explode {
-        0% {
-          transform: scale(1);
-          opacity: 1;
-        }
-        50% {
-          transform: scale(1.5);
-          opacity: 0.5;
-        }
-        100% {
-          transform: scale(1.5);
-          opacity: 0;
-        }
-      }
-    `;
-
-    // Adiciona a animação ao estilo global
-    const styleSheet = document.styleSheets[0];
-    styleSheet.insertRule(apoptoseAnimation, styleSheet.cssRules.length);
-
-    // Recupera as animações atuais aplicadas ao elemento
-    const currentAnimations =
-      getComputedStyle(cell.nativeElement).animation || '';
-
-    // Adiciona a nova animação sem remover as anteriores
-    const animationName = 'explode';
-    const newAnimation = `${animationName} 2s ease-in-out`;
-    const combinedAnimations = currentAnimations
-      ? `${currentAnimations}, ${newAnimation}`
-      : newAnimation;
-
-    // Aplica todas as animações ao elemento
-    this.renderer.setStyle(cell.nativeElement, 'animation', combinedAnimations);
   }
 }
