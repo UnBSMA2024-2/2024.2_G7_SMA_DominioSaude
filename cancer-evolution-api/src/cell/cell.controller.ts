@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post, Put } from '@nestjs/common';
 import { Cell } from './interfaces/cell.interface';
 import { CellGateway } from './cell.gateway';
 import { AnalitcsSimulation } from './interfaces/analiticsSimulation.interface';
@@ -46,5 +46,14 @@ export class CellController {
       this.analitcsSimulation = analitcs;
       this.cellGateway.handleCell(null, 'finish', analitcs);
     }
+  }
+
+  @Put('/prepare-for-new-simulation')
+  prepareForNewSimulation() {
+    this.cellList = [];
+    this.cellApoptoseList = [];
+    this.analitcsSimulation = null;
+
+    console.log('API pronta para rodar uma nova simulação!');
   }
 }
