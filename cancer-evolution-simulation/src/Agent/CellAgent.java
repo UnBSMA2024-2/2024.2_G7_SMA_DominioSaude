@@ -263,7 +263,44 @@ public class CellAgent extends Agent {
         System.out.println("Câncer: " + (cancerousCount * 100.0 / totalCells) + "%");
         System.out.println("--------------------------------------------------------------");
 
+        this.requestFinishSimulation(
+        		String.format("%.2f%%",(normalCount * 100.0 / totalCells)), 
+        		String.format("%.2f%%",(damagedCount * 100.0 / totalCells)), 
+        		String.format("%.2f%%",(preCancerousCount * 100.0 / totalCells)),  
+        		String.format("%.2f%%",(cancerousCount * 100.0 / totalCells)) 
+        );
 
         System.exit(0);
+    }
+    
+    private void requestFinishSimulation(String normalPercentage, String damagedPercentage, String preCancerousPercentage, String cancerousPercentage) {
+        try {
+            String url = "http://localhost:3000/cell/finish-simulation";
+            HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Content-Type", "application/json");
+            conn.setRequestProperty("Accept", "application/json");
+            conn.setDoOutput(true);
+
+            String jsonInputString = String.format(
+                    "{\"normalPercentage\": \"%s\", \"damagedPercentage\": \"%s\", \"preCancerousPercentage\": \"%s\", \"cancerousPercentage\": \"%s\"}",
+                    normalPercentage, damagedPercentage, preCancerousPercentage, cancerousPercentage
+            );
+
+            try (OutputStream os = conn.getOutputStream()) {
+                byte[] input = jsonInputString.getBytes("utf-8");
+                os.write(input, 0, input.length);
+            }
+
+            if (conn.getResponseCode() != 201) {
+                System.out.println("Erro " + conn.getResponseCode() + " ao enviar dados para a URL " + url);
+            }
+
+            conn.disconnect();
+        } catch (Exception e) {
+            System.out.println("Erro ao fazer a requisição HTTP:");
+            e.printStackTrace();
+        }
     }
 }
