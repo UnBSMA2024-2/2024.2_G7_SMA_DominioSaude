@@ -1,4 +1,4 @@
-import { Body, Controller, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Post } from '@nestjs/common';
 import { Cell } from './interfaces/cell.interface';
 import { CellGateway } from './cell.gateway';
 import { AnalitcsSimulation } from './interfaces/analiticsSimulation.interface';
@@ -48,7 +48,7 @@ export class CellController {
     }
   }
 
-  @Put('/prepare-for-new-simulation')
+  @Delete('/prepare-for-new-simulation')
   prepareForNewSimulation() {
     this.cellList = [];
     this.cellApoptoseList = [];
