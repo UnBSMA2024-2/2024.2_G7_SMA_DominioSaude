@@ -92,8 +92,8 @@ export class AppComponent implements OnInit {
             'Simulação Finalizada!',
             undefined,
             {
-              horizontalPosition: 'end',
-              verticalPosition: 'top',
+              horizontalPosition: 'center',
+              verticalPosition: 'bottom',
               duration: 3000,
             }
           );
