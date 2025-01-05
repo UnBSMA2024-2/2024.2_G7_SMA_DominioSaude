@@ -7,8 +7,10 @@
 ## Alunos
 |Matrícula | Aluno |
 | -- | -- |
-| xx/xxxxxx  |  xxxx xxxx xxxxx |
-| xx/xxxxxx  |  xxxx xxxx xxxxx |
+| 20/2016168  |  Eric Camargo da Silva |
+| 20/2016524  |  Henrique Torres Landin |
+| 20/2063346  |  Jose Filipi Brito Souza |
+| 21/1029399  |  Kauã Vinícius Ponte Aguiar |
 
 ## Sobre 
 Descreva o seu projeto em linhas gerais. 
