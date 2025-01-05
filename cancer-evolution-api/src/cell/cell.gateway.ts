@@ -13,7 +13,10 @@ import { Cell } from './interfaces/cell.interface';
 export class CellGateway {
   @WebSocketServer() server: Server;
 
-  handleCell(cell: Cell): void {
-    this.server.emit('cell', cell);
+  handleCell(cell: Cell, behavior: string): void {
+    this.server.emit('cell', {
+      cell,
+      behavior,
+    });
   }
 }

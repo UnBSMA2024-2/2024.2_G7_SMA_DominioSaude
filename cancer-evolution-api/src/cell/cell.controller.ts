@@ -4,20 +4,23 @@ import { CellGateway } from './cell.gateway';
 
 @Controller('cell')
 export class CellController {
-  cells: Cell[] = [];
-  apoptoseCells: Cell[] = [];
-
   constructor(private cellGateway: CellGateway) {}
 
   @Post()
   saveCell(@Body() cell: Cell) {
-    console.log(cell);
-    this.cellGateway.handleCell(cell);
+    console.log('division: ', cell);
+    this.cellGateway.handleCell(cell, 'division');
   }
 
   @Post('/apoptose')
-  apoptoseCell(@Body() cell: Cell) {}
+  apoptoseCell(@Body() cell: Cell) {
+    console.log('apoptose: ', cell);
+    this.cellGateway.handleCell(cell, 'apoptose');
+  }
 
   @Post('/repair')
-  repairCell(@Body() cell: Cell) {}
+  repairCell(@Body() cell: Cell) {
+    console.log('repair: ', cell);
+    this.cellGateway.handleCell(cell, 'repair');
+  }
 }
