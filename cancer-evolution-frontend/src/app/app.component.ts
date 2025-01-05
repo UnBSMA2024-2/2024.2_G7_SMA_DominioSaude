@@ -36,36 +36,37 @@ export class AppComponent implements OnInit {
   }
 
   handleCell(): void {
-    this.webSocketService.on('cell').subscribe((cell) => {
-      // if (this.cellElements.toArray().length > 0) {
-      //   const lastCell =
-      //     this.cellElements.toArray()[this.cellElements.length - 1];
-      //   this.animateGrowth(lastCell);
-      // }
+    this.webSocketService.on('cell').subscribe(({ cell, behavior }) => {
+      if (behavior == 'repair') {
+        const index = this.cellList.findIndex((c) => c.name === cell.name);
+        this.cellList[index].cellType = cell.cellType;
+        const cellElement = this.cellElements.toArray()[index];
+        cellElement.nativeElement.style.backgroundColor = this.setCellColor(
+          this.cellList[index].cellType
+        );
+      }
 
-      console.log(cell);
+      if (behavior == 'apoptose') {
+        const index = this.cellList.findIndex((c) => c.name === cell.name);
+        const apoptoseElement = this.cellElements.toArray()[index];
 
-      let isNewCell = true;
-      this.cellList.forEach((c, index) => {
-        if (c.name == cell.name) {
-          c.cellType = cell.cellType;
-          const cellElement = this.cellElements.toArray()[index];
-          cellElement.nativeElement.style.backgroundColor = this.setCellColor(
-            c.cellType
-          );
+        this.applyApoptoseAnimation(apoptoseElement);
+        this.cdr.detectChanges();
+      }
 
-          isNewCell = false;
+      if (behavior == 'division') {
+        const existingCell = this.cellList.find((c) => c.name === cell.name);
+
+        if (!existingCell) {
+          this.cellList.push(cell);
+          this.cdr.detectChanges();
+          const lastCell =
+            this.cellElements.toArray()[this.cellElements.length - 1];
+          const height = this.cellContainer.nativeElement.offsetHeight;
+          const width = this.cellContainer.nativeElement.offsetWidth;
+          this.applyRandomAnimation(lastCell, height, width);
         }
-      });
-
-      isNewCell && this.cellList.push(cell);
-      this.cdr.detectChanges();
-
-      const lastCell =
-        this.cellElements.toArray()[this.cellElements.length - 1];
-      const height = this.cellContainer.nativeElement.offsetHeight;
-      const width = this.cellContainer.nativeElement.offsetWidth;
-      this.applyRandomAnimation(lastCell, height, width);
+      }
     });
   }
 
@@ -125,41 +126,41 @@ export class AppComponent implements OnInit {
     return Math.random() * limit - limit / 2;
   }
 
-  // animateGrowth(cell: ElementRef): void {
-  //   // Define a animação de crescimento
-  //   const growAnimation = `
-  //     @keyframes growShrink {
-  //       0% {
-  //         width: 20px;
-  //         height: 20px;
-  //       }
-  //       50% {
-  //         width: 50px;
-  //         height: 50px;
-  //       }
-  //       100% {
-  //         width: 20px;
-  //         height: 20px;
-  //       }
-  //     }
-  //   `;
+  applyApoptoseAnimation(cell: ElementRef): void {
+    // Define a animação de crescimento
+    const apoptoseAnimation = `
+      @keyframes explode {
+        0% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(1.5);
+          opacity: 0.5;
+        }
+        100% {
+          transform: scale(1.5);
+          opacity: 0;
+        }
+      }
+    `;
 
-  //   // Adiciona a animação ao estilo global
-  //   const styleSheet = document.styleSheets[0];
-  //   styleSheet.insertRule(growAnimation, styleSheet.cssRules.length);
+    // Adiciona a animação ao estilo global
+    const styleSheet = document.styleSheets[0];
+    styleSheet.insertRule(apoptoseAnimation, styleSheet.cssRules.length);
 
-  //   // Recupera as animações atuais aplicadas ao elemento
-  //   const currentAnimations =
-  //     getComputedStyle(cell.nativeElement).animation || '';
+    // Recupera as animações atuais aplicadas ao elemento
+    const currentAnimations =
+      getComputedStyle(cell.nativeElement).animation || '';
 
-  //   // Adiciona a nova animação sem remover as anteriores
-  //   const animationName = 'growShrink';
-  //   const newAnimation = `${animationName} 2s ease-in-out`;
-  //   const combinedAnimations = currentAnimations
-  //     ? `${currentAnimations}, ${newAnimation}`
-  //     : newAnimation;
+    // Adiciona a nova animação sem remover as anteriores
+    const animationName = 'explode';
+    const newAnimation = `${animationName} 2s ease-in-out`;
+    const combinedAnimations = currentAnimations
+      ? `${currentAnimations}, ${newAnimation}`
+      : newAnimation;
 
-  //   // Aplica todas as animações ao elemento
-  //   this.renderer.setStyle(cell.nativeElement, 'animation', combinedAnimations);
-  // }
+    // Aplica todas as animações ao elemento
+    this.renderer.setStyle(cell.nativeElement, 'animation', combinedAnimations);
+  }
 }
