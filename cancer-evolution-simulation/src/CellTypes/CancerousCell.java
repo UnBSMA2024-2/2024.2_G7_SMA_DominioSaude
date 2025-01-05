@@ -10,8 +10,8 @@ public class CancerousCell extends CellType {
 	}
 	
 	@Override
-	public void repair(Agent a) {
-		return;
+	public boolean repair(Agent a) {
+		return false;
 	}
 	
 	@Override 

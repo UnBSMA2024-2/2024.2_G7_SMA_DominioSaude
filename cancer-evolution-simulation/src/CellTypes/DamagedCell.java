@@ -13,13 +13,16 @@ public class DamagedCell extends CellType{
 	}
 	
 	@Override
-	public void repair(Agent a) {
+	public boolean repair(Agent a) {
 		final Random random = new Random();
 		int randomNumber = random.nextInt(99) + 1;
 		if (randomNumber <= repairCapability) {
 			setcellState(ECellState.Normal);
 			System.out.println(a.getLocalName() + " realizou REPARO!");
+			return true;
 		}
+		
+		return false;
 	}
 	
 	@Override 

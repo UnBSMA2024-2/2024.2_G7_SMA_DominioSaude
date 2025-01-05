@@ -209,6 +209,7 @@ public class CellAgent extends Agent {
         protected void onTick() {
             if (celltype.apoptose(agent))
                 agentCount--;
+               	requestCell(getLocalName(), String.format("%d%%", celltype.getGeneticPredisposition()), celltype.getClass().getSimpleName(), "/cell/apoptose");
         }
     }
 
@@ -223,7 +224,9 @@ public class CellAgent extends Agent {
 
         @Override
         protected void onTick() {
-            celltype.repair(agent);
+            if (celltype.repair(agent)) {
+               	requestCell(getLocalName(), String.format("%d%%", celltype.getGeneticPredisposition()), celltype.getClass().getSimpleName(), "/cell/repair");
+            }
         }
     }
 

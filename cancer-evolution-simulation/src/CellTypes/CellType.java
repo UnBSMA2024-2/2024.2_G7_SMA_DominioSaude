@@ -27,8 +27,8 @@ public abstract class CellType {
         return false;
 	}
 	
-	public void repair(Agent a){
-        return;
+	public boolean repair(Agent a){
+        return false;
 	}
 	
 	// generation == 0
