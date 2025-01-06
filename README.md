@@ -105,7 +105,7 @@ Para alterar esses valores, edite o arquivo de configuração ou as variáveis c
 | -- | -- | -- | -- |
 |  Eric  |    |    |    |
 |  Henrique  |    |    |    |
-|  José Filipi  |  Ajuste na simulação com implementação de limitação de agentes, questões de temporização e feedback de resultados da simulação e organização inicial da temática  | Excelente  | https://github.com/UnBSMA2024-2/2024.2_G7_SMA_DominioSaude/commit/8eeaf9a5ddcfda9c2b350760e22df0d082279e9b  |
+|  José Filipi  |  Ajuste na simulação com implementação de limitação de agentes, questões de temporização e feedback de resultados da simulação e organização inicial da temática  | Excelente  | [8eeaf9a](https://github.com/UnBSMA2024-2/2024.2_G7_SMA_DominioSaude/commit/8eeaf9a5ddcfda9c2b350760e22df0d082279e9b)
 | Kauã  | Codificação do agente célula e implementação dos estados | Excelente | [96ad532](https://github.com/UnBSMA2024-2/2024.2_G7_SMA_DominioSaude/commit/96ad5329c7812d907ff10f0a73071bcbd7582111)
 
 ## Outros 
