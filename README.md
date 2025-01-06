@@ -51,7 +51,10 @@ TEMPO: +/- 15min
 Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 |Nome do Membro | Contribuição | Significância da Contribuição para o Projeto (Excelente/Boa/Regular/Ruim/Nula) | Comprobatórios (ex. links para commits)
 | -- | -- | -- | -- |
-| Fulano  |  Programação dos Fatos da Base de Conhecimento Lógica | Boa | Commit tal (com link)
+|  Eric  |    |    |    |
+|  Henrique  |    |    |    |
+|  Filipi  |    |    |    |
+| Kauã  | Codificação do agente célula e implementação dos estados | Excelente | [96ad532](https://github.com/UnBSMA2024-2/2024.2_G7_SMA_DominioSaude/commit/96ad5329c7812d907ff10f0a73071bcbd7582111)
 
 ## Outros 
 Quaisquer outras informações sobre o projeto podem ser descritas aqui. Não esqueça, entretanto, de informar sobre:
