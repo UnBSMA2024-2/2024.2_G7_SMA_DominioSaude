@@ -16,6 +16,7 @@ import { AnalitcsSimulation } from './types/analitics.type';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { AnalitcsComponent } from './components/analitcs/analitcs.component';
+import { CellService } from './services/cell.service';
 
 @Component({
   selector: 'app-root',
@@ -36,10 +37,12 @@ export class AppComponent implements OnInit {
     private renderer: Renderer2,
     private cdr: ChangeDetectorRef,
     private snackbar: MatSnackBar,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private cellService: CellService
   ) {}
 
   ngOnInit(): void {
+    this.cellService.prepareForNewSimulation();
     this.handleCell();
   }
 
