@@ -28,6 +28,7 @@ export class AppComponent implements OnInit {
   @ViewChild('cellContainer') cellContainer!: ElementRef;
   @ViewChildren('cellElement') cellElements!: QueryList<ElementRef>;
   cellList: Cell[] = [];
+  cellApoptoseSet: Set<string> = new Set();
   analitcs!: AnalitcsSimulation;
 
   constructor(
@@ -72,14 +73,17 @@ export class AppComponent implements OnInit {
         }
 
         if (behavior == 'apoptose') {
-          const index = this.cellList.findIndex((c) => c.name === cell.name);
+          if (!this.cellApoptoseSet.has(cell.name)) {
+            this.cellApoptoseSet.add(cell.name);
+            const index = this.cellList.findIndex((c) => c.name === cell.name);
 
-          if (cell.cellType !== CellType.CancerousCell) {
-            console.log(
-              `${cell.name} realizou apoptose, tipo da celula: ${cell.cellType}`
-            );
-            this.cellList.splice(index, 1);
-            this.cdr.detectChanges();
+            if (cell.cellType !== CellType.CancerousCell) {
+              console.log(
+                `${cell.name} realizou apoptose, tipo da celula: ${cell.cellType}`
+              );
+              this.cellList.splice(index, 1);
+              this.cdr.detectChanges();
+            }
           }
         }
 
@@ -107,6 +111,7 @@ export class AppComponent implements OnInit {
 
             dialogRef.afterClosed().subscribe(() => {
               this.cellList = [];
+              this.cellApoptoseSet.clear();
 
               this.snackbar.open(
                 'Sistema pronto para uma nova simulação!',
