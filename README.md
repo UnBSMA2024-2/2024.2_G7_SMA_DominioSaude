@@ -13,9 +13,14 @@
 | 21/1029399  |  Kauã Vinícius Ponte Aguiar |
 
 ## Sobre 
-Descreva o seu projeto em linhas gerais. 
-Use referências, links, que permitam conhecer um pouco mais sobre o projeto.
-Capriche nessa seção, pois ela é a primeira a ser lida pelos interessados no projeto.
+
+Este projeto utiliza **sistemas multiagentes** para simular o comportamento de tecidos cancerígenos, empregando a plataforma **JADE** (Java Agent DEvelopment Framework). Nesta abordagem, cada célula é modelada como um agente autônomo, replicando padrões biológicos de crescimento, mutação e morte celular. O objetivo principal é desenvolver um modelo que ajude na compreensão de dinâmicas celulares em tecidos cancerígenos, além de se aprofundar mais nos conceitos que envolvem sistemas multiagentes.  
+
+### Tecnologias  
+
+- **JADE**: Framework para desenvolvimento de sistemas multiagentes em Java.  
+- **Java**: Linguagem principal para o desenvolvimento do simulador.  
+- **NodeJs e Angular**: Frameworks javascript utilizados para produzir a interface gráfica.  
 
 ## Screenshots
 Adicione 2 ou mais screenshots do projeto em termos de interface e/ou funcionamento.
