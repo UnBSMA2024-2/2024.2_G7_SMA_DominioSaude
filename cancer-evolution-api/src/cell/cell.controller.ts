@@ -16,6 +16,7 @@ export class CellController {
     if (!this.analitcsSimulation) {
       if (!this.cellList.includes(cell)) {
         console.log('division: ', cell);
+        this.cellList.push(cell);
         this.cellGateway.handleCell(cell, 'division');
       }
     }
@@ -26,6 +27,7 @@ export class CellController {
     if (!this.analitcsSimulation) {
       if (!this.cellApoptoseList.includes(cell)) {
         console.log('apoptose: ', cell);
+        this.cellApoptoseList.push(cell);
         this.cellGateway.handleCell(cell, 'apoptose');
       }
     }
