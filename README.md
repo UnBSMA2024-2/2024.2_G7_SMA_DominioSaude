@@ -22,9 +22,12 @@ Este projeto utiliza **sistemas multiagentes** para simular o comportamento de t
 - **Java**: Linguagem principal para o desenvolvimento do simulador.  
 - **NodeJs e Angular**: Frameworks javascript utilizados para produzir a interface gráfica.  
 
-## Screenshots
-![Interface Gráfica](/images/interface.png)
-![Resultado da Simulação](/images/simulacao.png)
+## Screenshots  
+![Interface Gráfica](images/interface.png)  
+**Legenda:** Interface gráfica do sistema.  
+
+![Resultado da Simulação](images/simulacao.png)  
+**Legenda:** Resultado da simulação.  
 
 
 ## Instalação 
