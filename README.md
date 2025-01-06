@@ -1,8 +1,8 @@
-# Simulação de uma evolução cancerígena
+# Simulação de multiplicação celular e desenvolvimento do câncer
 
 **Disciplina**: FGA0134 - Sistemas Multiagentes <br>
 **Nro do Grupo**: 07<br>
-**Frente de Pesquisa**: XXXXXXXXXX<br>
+**Frente de Pesquisa**: SMA no domínio da saúde - Crescimento celular e desenvolvimento do câncer<br>
 
 ## Alunos
 |Matrícula | Aluno |
@@ -23,46 +23,107 @@ Este projeto utiliza **sistemas multiagentes** para simular o comportamento de t
 - **NodeJs e Angular**: Frameworks javascript utilizados para produzir a interface gráfica.  
 
 ## Screenshots
-Adicione 2 ou mais screenshots do projeto em termos de interface e/ou funcionamento.
+![Interface Gráfica](/images/interface.png)
+![Resultado da Simulação](/images/simulacao.png)
+
 
 ## Instalação 
-**Linguagens**: xxxxxx<br>
-**Tecnologias**: xxxxxx<br>
-Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
-Insira um manual ou um script para auxiliar ainda mais.
-Gifs animados e outras ilustrações são bem-vindos!
+**Linguagens**: Java, CSS, JavaScript<br>
+**Tecnologias**: JADE, NodeJS<br>
+
 
 ## Uso 
-Explique como usar seu projeto.
-Procure ilustrar em passos, com apoio de telas do software, seja com base na interface gráfica, seja com base no terminal.
-Nessa seção, deve-se revelar de forma clara sobre o funcionamento do software.
 
-## Vídeo
-Adicione 1 ou mais vídeos com a execução do projeto.
-Procure: 
-(i) Introduzir o projeto;
-(ii) Mostrar passo a passo o código, explicando-o, e deixando claro o que é de terceiros, e o que é contribuição real da equipe;
-(iii) Apresentar particularidades do Paradigma, da Linguagem, e das Tecnologias, e
-(iV) Apresentar lições aprendidas, contribuições, pendências, e ideias para trabalhos futuros.
-OBS: TODOS DEVEM PARTICIPAR, CONFERINDO PONTOS DE VISTA.
-TEMPO: +/- 15min
+1. **Inicie a plataforma JADE**:
+   - Execute o script ou comando para iniciar a plataforma JADE no terminal:
+     ```bash
+     java -cp jade.jar;classes jade.Boot -gui
+     ```
+
+2. **Adicione um agente célula**:
+   - No terminal do JADE, use o comando:
+     ```bash
+     addAgent CellAgent:Agent.CellAgent(InitialCellState, Generation)
+     ```
+     Exemplo:
+     ```bash
+     addAgent CellAgent:Agent.CellAgent(Normal, 0)
+     ```
+
+### Funcionamento do projeto (Por padrão)
+
+- **Divisão celular**:
+  - A cada 4 "dias" (simulados), células normais e danificadas podem se dividir, gerando novas células-filhas.
+  - Limitação: O número total de agentes não pode exceder 100. Quando atingido, metade dos agentes será removida.
+
+- **Apoptose celular**:
+  - Células danificadas ou pré-cancerosas podem entrar em apoptose (morte celular programada).
+
+- **Reparo celular**:
+  - Células danificadas podem ser reparadas, revertendo ao estado normal.
+
+- **Finalização da simulação**:
+  - Após 60 "dias" (simulados), a simulação termina automaticamente.
+  - Um relatório de percentual de células por estado é gerado.
+
+### Parâmetros Modificáveis
+
+Os seguintes parâmetros podem ser ajustados no código para personalizar a simulação:
+
+1. **`DAYS_TO_RUN`**:
+   - Descrição: Número total de dias simulados.
+   - Padrão: `60`.
+
+2. **`MAX_AGENTS`**:
+   - Descrição: Número máximo de agentes simultâneos permitidos.
+   - Padrão: `100`.
+
+3. **`DIVISION_INTERVAL`**:
+   - Descrição: Intervalo de tempo (em dias simulados) para divisão celular.
+   - Padrão: `4`.
+
+4. **`GENETIC_PREDISPOSITION`**:
+   - Descrição: Percentual de chance de uma célula danificada evoluir para um estado pré-canceroso.
+   - Padrão: `10%`.
+
+5. **`HTTP_ENDPOINT`**:
+   - Descrição: URL para a qual os dados da simulação são enviados.
+   - Padrão: `http://localhost:3000`.
+
+6. **`STATE_CHANGE_PROBABILITIES`**:
+   - Descrição: Probabilidades de transição entre os estados celulares (danificada, pré-cancerosa, etc.).
+   - Padrão: Definido no código conforme as regras biológicas.
+
+Para alterar esses valores, edite o arquivo de configuração ou as variáveis correspondentes no código.
+
+
+## Vídeo da apresentação
+[![DC](https://img.youtube.com/vi/NAbeAKNbcOc/0.jpg)](https://www.youtube.com/watch?v=NAbeAKNbcOc)
 
 ## Participações
-Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
-|Nome do Membro | Contribuição | Significância da Contribuição para o Projeto (Excelente/Boa/Regular/Ruim/Nula) | Comprobatórios (ex. links para commits)
+|Nome do Membro | Contribuição | Significância da Contribuição para o Projeto (Excelente/Boa/Regular/Ruim/Nula) | Comprobatórios
 | -- | -- | -- | -- |
 |  Eric  |    |    |    |
 |  Henrique  |    |    |    |
-|  Filipi  |    |    |    |
+|  José Filipi  |  Ajuste na simulação com implementação de limitação de agentes, questões de temporização e feedback de resultados da simulação e organização inicial da temática  | Excelente  | https://github.com/UnBSMA2024-2/2024.2_G7_SMA_DominioSaude/commit/8eeaf9a5ddcfda9c2b350760e22df0d082279e9b  |
 | Kauã  | Codificação do agente célula e implementação dos estados | Excelente | [96ad532](https://github.com/UnBSMA2024-2/2024.2_G7_SMA_DominioSaude/commit/96ad5329c7812d907ff10f0a73071bcbd7582111)
 
 ## Outros 
-Quaisquer outras informações sobre o projeto podem ser descritas aqui. Não esqueça, entretanto, de informar sobre:
-(i) Lições Aprendidas;
-(ii) Percepções;
-(iii) Contribuições e Fragilidades, e
-(iV) Trabalhos Futuros.
+### Lições Aprendidas
+- **Aprendizado sobre Sistemas Multiagentes**: O desenvolvimento permitiu aprofundar o conhecimento em sistemas multiagentes e a utilização prática do framework JADE.  
+- **Biologia e Computação**: Foi possível compreender como conceitos biológicos, como divisão celular e apoptose, podem ser modelados computacionalmente.  
+---
+
+#### Fragilidades
+1. **Escalabilidade Limitada**: A capacidade máxima de agentes é restrita pelo desempenho do ambiente JADE e da máquina que executa o sistema.  
+2. **Simplificação**: As probabilidades de transição entre estados celulares são fixas, o que pode limitar a representatividade de cenários reais, além disso, não representa a complexidade celular completa, sendo necessário englobar muitos outros conceitos para enriquecer a simulação e aumentar a confiabilidade.  
 
 ## Fontes
-Referencie, adequadamente, as referências utilizadas.
-Indique ainda sobre fontes de leitura complementares.
+
+**AMORIM, Aline Rodrigues.** *Genética do Câncer.* 2002. Monografia (Licenciatura em Ciências Biológicas) – Faculdade de Ciências da Saúde, Centro Universitário de Brasília, Brasília, 2002. Orientador: Cláudio Henrique Cerri e Silva. Disponível em: https://repositorio.uniceub.br/jspui/bitstream/123456789/2497/2/9864661.pdf. Acesso em: 6 jan. 2025.
+
+ANAND, Ashish; SUGANTHAN, P. N. Multiclass cancer classification by support vector machines with class-wise optimized genes and probability estimates. Journal of Theoretical Biology, v. 259, n. 3, p. 533–540, 7 ago. 2009. Disponível em: https://www.sciencedirect.com/science/article/abs/pii/S0022519309001854. Acesso em: 6 jan. 2025.
+
+BATISTA, André Filipe de Moraes. Manual Complementar do Projeto de Pesquisa: Sistemas Multiagentes na Construção de um Middleware para Suporte a Ambientes Computacionais. Orientação: Profa Dra Maria das Graças Bruno Marietto. Universidade Federal do ABC, Santo André, ago. 2008. Disponível em: https://jade-project.gitlab.io/docs/ManualJadePortuguese.pdf. Acesso em: 6 jan. 2025.
+
+TATARI, Farzaneh; AKBARZADEH-T, Mohammad-R.; SABAHI, Ahmad. Fuzzy-probabilistic multi-agent system for breast cancer risk assessment and insurance premium assignment. Journal of Biomedical Informatics, v. 45, n. 6, p. 1021–1034, dez. 2012. Disponível em: https://www.sciencedirect.com/science/article/pii/S1532046412000883. Acesso em: 6 jan. 2025.
