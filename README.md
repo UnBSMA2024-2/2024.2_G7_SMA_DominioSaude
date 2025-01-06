@@ -31,19 +31,41 @@ Este projeto utiliza **sistemas multiagentes** para simular o comportamento de t
 
 
 ## Instalação 
-**Linguagens**: Java, CSS, JavaScript<br>
-**Tecnologias**: JADE, NodeJS<br>
+**Linguagens**: Java, TypesScript<br>
+**Tecnologias**: JADE, NestJS (Frameword de NodeJs) e Angular<br>
 
 
 ## Uso 
+1. **Rodar a API**:
+   - Entre no diretório `/cancer-evolution-api`
+   - Intale as dependências com o comando:
+     ```bash
+     pnpm install
+     ```
+   - Rode a aplicação com o comando:
+     ```bash
+     pnpm run start
+     ```
+     
+2. **Rodar o Frontend**:
+   - Entre no diretório `/cancer-evolution-frontend`
+   - Intale as dependências com o comando:
+     ```bash
+     npm install
+     ```
+   - Rode a aplicação com o comando:
+     ```bash
+     npm start
+     ```
 
-1. **Inicie a plataforma JADE**:
+3. **Inicie a plataforma JADE**:
+   - Entre no diretório `/cancer-evolution-simulation`
    - Execute o script ou comando para iniciar a plataforma JADE no terminal:
      ```bash
      java -cp jade.jar;classes jade.Boot -gui
      ```
 
-2. **Adicione um agente célula**:
+5. **Adicione um agente célula**:
    - No terminal do JADE, use o comando:
      ```bash
      addAgent CellAgent:Agent.CellAgent(InitialCellState, Generation)
@@ -107,7 +129,7 @@ Para alterar esses valores, edite o arquivo de configuração ou as variáveis c
 |Nome do Membro | Contribuição | Significância da Contribuição para o Projeto (Excelente/Boa/Regular/Ruim/Nula) | Comprobatórios
 | -- | -- | -- | -- |
 |  Eric  |    |    |    |
-|  Henrique  |    |    |    |
+|  Henrique  | Desenvolvimento de uma API para integração com o frontend (via WebSocket) e com o sistema JADE (via HTTP). Implementação do frontend da aplicação e ajustes no código do JADE para compatibilidade com a API.   |  Excelente  |  [6ce87f1](https://github.com/UnBSMA2024-2/2024.2_G7_SMA_DominioSaude/commit/6ce87f1d86fc6c29ea41059433e5f1d8cb91d4f6)  |
 |  José Filipi  |  Ajuste na simulação com implementação de limitação de agentes, questões de temporização e feedback de resultados da simulação e organização inicial da temática  | Excelente  | [8eeaf9a](https://github.com/UnBSMA2024-2/2024.2_G7_SMA_DominioSaude/commit/8eeaf9a5ddcfda9c2b350760e22df0d082279e9b)
 | Kauã  | Codificação do agente célula e implementação dos estados | Excelente | [96ad532](https://github.com/UnBSMA2024-2/2024.2_G7_SMA_DominioSaude/commit/96ad5329c7812d907ff10f0a73071bcbd7582111)
 
