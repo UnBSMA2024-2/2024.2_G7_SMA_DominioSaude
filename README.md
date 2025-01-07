@@ -123,7 +123,7 @@ Para alterar esses valores, edite o arquivo de configuração ou as variáveis c
 
 
 ## Vídeo da apresentação
-[![DC](https://img.youtube.com/vi/2YAa3Sa1OaM/1.jpg)](https://www.youtube.com/watch?v=2YAa3Sa1OaM)
+[![DC](https://img.youtube.com/vi/2YAa3Sa1OaM/0.jpg)](https://www.youtube.com/watch?v=2YAa3Sa1OaM)
 
 ## Participações
 |Nome do Membro | Contribuição | Significância da Contribuição para o Projeto (Excelente/Boa/Regular/Ruim/Nula) | Comprobatórios
