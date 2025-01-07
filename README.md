@@ -123,12 +123,12 @@ Para alterar esses valores, edite o arquivo de configuração ou as variáveis c
 
 
 ## Vídeo da apresentação
-[![DC](https://img.youtube.com/vi/NAbeAKNbcOc/0.jpg)](https://www.youtube.com/watch?v=NAbeAKNbcOc)
+[![DC](https://img.youtube.com/vi/2YAa3Sa1OaM/1.jpg)](https://www.youtube.com/watch?v=2YAa3Sa1OaM)
 
 ## Participações
 |Nome do Membro | Contribuição | Significância da Contribuição para o Projeto (Excelente/Boa/Regular/Ruim/Nula) | Comprobatórios
 | -- | -- | -- | -- |
-|  Eric  |    |    |    |
+|  Eric  |  N/A  |  Nula  |  N/A  |
 |  Henrique  | Desenvolvimento de uma API para integração com o frontend (via WebSocket) e com o sistema JADE (via HTTP). Implementação do frontend da aplicação e ajustes no código do JADE para compatibilidade com a API.   |  Excelente  |  [6ce87f1](https://github.com/UnBSMA2024-2/2024.2_G7_SMA_DominioSaude/commit/6ce87f1d86fc6c29ea41059433e5f1d8cb91d4f6)  |
 |  José Filipi  |  Ajuste na simulação com implementação de limitação de agentes, questões de temporização e feedback de resultados da simulação e organização inicial da temática  | Excelente  | [8eeaf9a](https://github.com/UnBSMA2024-2/2024.2_G7_SMA_DominioSaude/commit/8eeaf9a5ddcfda9c2b350760e22df0d082279e9b)
 | Kauã  | Codificação do agente célula e implementação dos estados | Excelente | [96ad532](https://github.com/UnBSMA2024-2/2024.2_G7_SMA_DominioSaude/commit/96ad5329c7812d907ff10f0a73071bcbd7582111)
