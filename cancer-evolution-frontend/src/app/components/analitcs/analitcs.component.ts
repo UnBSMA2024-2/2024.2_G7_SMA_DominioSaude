@@ -1,8 +1,13 @@
-import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy } from '@angular/core';
 import { CellService } from '../../services/cell.service';
 import { AnalitcsSimulation } from '../../types/analitics.type';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+  MatDialog,
+} from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { GraphComponent } from '../graph/graph.component';
 
 @Component({
   selector: 'app-analitcs',
@@ -15,7 +20,8 @@ export class AnalitcsComponent implements OnDestroy {
   constructor(
     public dialogRef: MatDialogRef<AnalitcsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: AnalitcsSimulation,
-    private cellService: CellService
+    private cellService: CellService,
+    private dialog: MatDialog
   ) {}
 
   ngOnDestroy(): void {
@@ -26,5 +32,13 @@ export class AnalitcsComponent implements OnDestroy {
 
   closeDialog() {
     this.dialogRef.close();
+  }
+
+  openGraphDialog() {
+    this.dialog.open(GraphComponent, {
+      width: '900px',
+      height: '700px',
+      data: this.data,
+    });
   }
 }
